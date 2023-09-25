@@ -20,16 +20,7 @@ async function connectDB() {
 
 
     const all = await foodCategory.find();
-    // console.log(all);
-
-
-//         const foodCategory = mongoose.model('foodCategory', foodCategorySchema, 'foodCategory');
-//         foodCategory.find({})
-              
-
-                // Once data is retrieved, you can start your server here
-                // startServer();
-            // }
+    
         } catch(e){
             console.log(e);
         }
@@ -39,6 +30,7 @@ async function connectDB() {
 function startServer() {
     const app = express();
 
+    
     // Configure your server routes and middleware here
 
     const port = process.env.PORT || 5000;
