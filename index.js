@@ -3,8 +3,20 @@ const app = express();
 const port = 5000;
 const connectDB = require('./db'); // Check the path to db.js
 
-app.use(express.json())
-app.use('/api', require("./Routes/CreateUser"))
+// Corrected CORS middleware
+app.use((req, res, next) => {
+    res.setHeader("Access-Control-Allow-Origin", "*");
+    res.header(
+        "Access-Control-Allow-Headers",
+        "Origin, X-Requested-With, Content-Type, Accept"
+    );
+    next(); // Call next to allow the middleware chain to continue
+});
+
+app.use(express.json());
+
+// Define your routes after setting up middleware
+app.use('/api', require("./Routes/CreateUser"));
 
 async function startServer() {
     try {
@@ -17,7 +29,6 @@ async function startServer() {
             res.send('Hello World!');
         });
 
-       
         app.listen(port, () => {
             console.log(`Example app listening on port ${port}`);
         });
