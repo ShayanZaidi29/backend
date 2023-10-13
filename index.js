@@ -17,13 +17,11 @@ app.use(express.json());
 
 // Define your routes after setting up middleware
 app.use('/api', require("./Routes/CreateUser"));
+app.use('/api', require("./Routes/DisplayData"));
 
 async function startServer() {
     try {
         await connectDB(); // Call the connectDB function to establish the database connection
-
-        // Rest of your code
-        // ...
 
         app.get('/', (req, res) => {
             res.send('Hello World!');
