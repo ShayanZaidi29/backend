@@ -14,5 +14,8 @@ const food_itemsSchema = new mongoose.Schema({
 );
 const food_items = mongoose.model('food_items',food_itemsSchema);
 
+const allCategories = async() => {
+    return await food_items.find({});
+}
 
-module.exports=food_items
+module.exports={food_items, allCategories}
