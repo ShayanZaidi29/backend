@@ -18,6 +18,7 @@ app.use(express.json());
 // Define your routes after setting up middleware
 app.use('/api', require("./Routes/CreateUser"));
 app.use('/api', require("./Routes/DisplayData"));
+app.use('/api', require("./Routes/OrderData"));
 
 async function startServer() {
     try {
