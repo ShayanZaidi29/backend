@@ -4,7 +4,9 @@ const Order = require('../models/Orders')
 
 router.post('/orderData', async (req, res)=> {
     let data = req.body.order_data
-    await data.splice(0,0,{Order_date:req.body.email})
+    // await data.splice(0,0,{Order_date:req.body.email})
+
+    let eId = await Order.findOne({ 'email': req.body.email })
     console.log(eId)
     if(eId === null){
         try{
@@ -17,7 +19,7 @@ router.post('/orderData', async (req, res)=> {
             })
         } catch (error){
             console.log(error.message)
-            res.send("Server Error", error.message)
+            res.status("Server error:").send(error.message);
         }
     }
 
@@ -34,4 +36,4 @@ router.post('/orderData', async (req, res)=> {
     }
 })
 
-module.exports = router;
+module.exports = router
